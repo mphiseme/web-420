@@ -1,0 +1,80 @@
+openapi: 3.0.0
+info:
+  title: Composer API
+  description: This is API contain a list of composers
+  version: "1.0.0"
+
+servers:
+ - url: http://localhost:40000/api
+   description: first server
+ - url: http://localhost:{port}/stagingapi
+   variables:
+     port:
+       enum:
+        - "41222"
+        - "40011"
+       default: !!str 40000 # !!str stringify 
+paths:
+  /composers:
+    get:
+      summary: Returns a list of composers
+      description: Operation to get composers
+      responses:
+        "200": # status code
+              description: An array of composers in Json
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      type: string
+        '500':    # status code
+          description: Server Exceptions    
+        '501':    # status code
+          description: MongoDB Exceptions.
+        default:
+              description: Unexpected error
+    post:
+      summary: Creates a new composer.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':    # status code
+          description: New composer added
+        '500':    # status code
+          description: Server Exceptions
+        '501':    # status code
+          description: MongoDB Exceptions.
+        default:
+          description: Unexpected error
+
+  /composers/{id}:
+    get:
+      summary: Returns a composer information by ID.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+             type: integer
+             format: int64
+             minimum: 1
+      responses:
+        '200':    # status code
+          description: success!! no issues with Param
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
+        '500':    # status code
+          description: Server exceptions
+        '501':    # status code
+          description: MongoDB exceptions
+        default:
+          description: Unexpected error
+          
