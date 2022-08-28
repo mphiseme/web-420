@@ -1,3 +1,8 @@
+# Title: phiseme_composers.yaml
+# Author: Manel phiseme
+# Date: 08/28/2022 
+# Description: setting up Api using openapi and yaml programing
+
 openapi: 3.0.0
 info:
   title: Composer API
@@ -14,6 +19,8 @@ servers:
         - "41222"
         - "40011"
        default: !!str 40000 # !!str stringify 
+
+ # set up get protocol to get list of composers
 paths:
   /composers:
     get:
@@ -34,6 +41,8 @@ paths:
           description: MongoDB Exceptions.
         default:
               description: Unexpected error
+
+     # set up post protocol to create new composer
     post:
       summary: Creates a new composer.
       requestBody:
@@ -51,6 +60,7 @@ paths:
         default:
           description: Unexpected error
 
+  # set up get protocol to get composer by id
   /composers/{id}:
     get:
       summary: Returns a composer information by ID.
