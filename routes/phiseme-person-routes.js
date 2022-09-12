@@ -1,3 +1,9 @@
+/*
+; Title:  phiseme-person-routes.js
+; Author: Manel Phiseme
+; Date:   9/11/2022
+; Description: model for person API
+*/
 const Express = require("express");
 const Router = Express.Router();
 const Person = require("../models/phiseme-person.js");
@@ -30,6 +36,7 @@ Router.get('/persons', async(rep, res) =>{
             if(err){
                 res.status(501).send("MongoDB Exception");
             }else{
+                // return list of person
                 res.json(persons);
             }
         })
@@ -75,6 +82,7 @@ Router.post("/persons", async(req, res)=>{
             if(err){
                 res.status("501").send("Array of person documents");
             }else{
+                 // Return created person
                 res.status(addPerson)
             }
         })
