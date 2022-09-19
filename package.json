@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "description": "Restful API course\r # WEB 420 RESTful APIs\r # Contributors\r * Robert Kumar\r * Manel Phiseme",
- 
   "scripts": {
     "start": "nodemon app.js"
   },
@@ -16,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mphiseme/web-420/issues"
   },
-  "homepage": "https://github.com/mphiseme/web-420#readme"
+  "homepage": "https://github.com/mphiseme/web-420#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3"
+  }
 }

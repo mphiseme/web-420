@@ -1,3 +1,10 @@
+/*
+; Title:  phiseme-person.js
+; Author: Manel Phiseme
+; Date:   9/11/2022
+; Description: model for person API
+*/
+
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
