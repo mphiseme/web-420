@@ -1,5 +1,5 @@
 /*
-; Title:  phiseme-composer-routes.js
+; Title:  phiseme-node-shopper-routes.js
 ; Author: Manel Phiseme
 ; Date:   9/20/2022
 ; Description: model for composer API
@@ -8,7 +8,6 @@ const Express = require("express");
 const { createIndexes } = require("../models/phiseme-customer");
 const Router = Express.Router();
 const Customer = require("../models/phiseme-customer");
-
 /**
  * /api/customers
   post:
