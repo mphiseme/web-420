@@ -106,7 +106,7 @@ router.post("/api/signup", async(req, res) =>{
             description: MongoDB Exception
   **/
 
-Router.post("/api/login", async(req, res)=>{
+router.post("/api/login", async(req, res)=>{
   try{
     User.findOne({userName: req.body.userName}, function(err, user){
       if(user){
