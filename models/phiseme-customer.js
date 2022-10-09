@@ -6,7 +6,7 @@ const lineItemSchema = new Schema({
     name: {type:String},
     price: {type:Number},
     quantity: {type:Number}
-})
+});
 
 const invoiceSchema = new Schema({
     subtotal: {type: Number},
