@@ -5,10 +5,8 @@
 ; Description: model for person API
 */
 const Express = require("express");
-const team = require("../model/team");
-const { collection, countDocuments, findOne } = require("../model/team");
 const router = Express.Router();
-const Team = require("../model/team");
+const Team = require("../models/phiseme-team");
 
 /**
  * findAllTeams
