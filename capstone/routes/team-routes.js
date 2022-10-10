@@ -11,26 +11,19 @@ const Team = require("../models/phiseme-team");
 /**
  * findAllTeams
  * @openapi
- * paths:
-/api/teams:
- get:
-    summary: API to find all teams
-    description: This find all the teams in collection
-    responses:
-      "200": #status code
-           Description: An array of teams
-           content:
-             application/json:
-               Schema:
-                 type: array
-                  items:
-                    type: String
-        "500": # status code
-          description: Server Exception 
-        "501": # status code
-          description: MongoDB Exception
-        default:
-          description: Unexpected error
+ * /api/teams:
+ *   get:
+ *     tags:
+ *       - Teams
+ *     description: API for returning an array of team documents.
+ *     summary: returns an array of team documents in JSON format.
+ *     responses:
+ *       '200':
+ *         description: Array of Team Documents.
+ *       '500':
+ *         description: Server Exception.
+ *       '501':
+ *         description: MongoDB Exception.
  */
 
 router.get("/teams", async(req, res)=>{
@@ -51,38 +44,44 @@ router.get("/teams", async(req, res)=>{
 /**
  * assignPlayerToTeam
  * @openapi
- * paths:
- /api/teams/:id/players
-   post:
-     Summary: Api to assign a player to a team
-     description: This API add player to a team
-     requestBody:
-       content:
-         application/json:
-           schema:
-             required:
-               -id
-               -firstName
-               -lastName
-               -salary
-             properties:
-              firstName:
-               type: string
-              lastName:
-                type: string
-              salary:
-                type: string
-     responses:
-     "200": # status code
-       description: Array of a play countDocuments
-     "401": # status code
-       description: Invalid teamId
-     "500": # status code
-       description: Server Exception 
-     "501": # status code
-       description: MongoDB Exception
+ * /api/teams/{id}/players:
+ *   post:
+ *     tags:
+ *       - Players
+ *     description: API for adding a player to team in the database.
+ *     summary: adds a player to a team document in the database.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: team document id
+ *         schema:
+ *           type: number
+ *     requestBody:
+ *       description: player information
+ *       content:
+ *         application/json:
+ *           schema:
+ *             required:
+ *               - firstName
+ *               - lastName
+ *               - salary
+ *             properties:
+ *               firstName:
+ *                 type: string
+ *               lastName:
+ *                 type: string
+ *               salary:
+ *                 type: number
+ *     responses:
+ *       '200':
+ *         description: Player Document.
+ *       '401':
+ *         description: Invalid teamId
+ *       '500':
+ *         description: Server Exception.
+ *       '501':
+ *         description: MongoDB Exception.
  */
-
 router.post('/teams/:id/players', async(req, res) =>{
   try{
     let teamId = req.params.id;
@@ -114,32 +113,31 @@ router.post('/teams/:id/players', async(req, res) =>{
     res.status(501).send("MongoDB Exception")
   }
 })
- 
-
 
 /**
  * findAllPlayersByTeamId
  * @openapi
- * api/teams/:id/players
-  GET:
-   summary: API to Find players by team ID
-   description: return players by a team ID
-   parameters:
-       name: id
-        in: paths 
-        required: true
-        description: Players document Id
-        schema:
-          type: String
-   responses:
-     '200':
-       description: 200	Array of player documents
-     '401':
-       description: Invalid teamId
-     '500':
-       description: Server Exception 
-     '501':
-       description: MongoDB Exception
+ * /api/teams/{id}/players:
+ *   get:
+ *     tags:
+ *       - Players
+ *     description: API for displaying all players in one team document.
+ *     summary: returns array of players from one team document.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: team document id
+ *         schema:
+ *           type: number
+ *     responses:
+ *       '200':
+ *         description: Array of Players.
+ *       '401':
+ *         description: Invalid teamId.
+ *       '500':
+ *         description: Server Exception.
+ *       '501':
+ *         description: MongoDB Exception.
  */
 
 router.get("/teams/:id/players", async(err, res)=>{
@@ -160,30 +158,30 @@ router.get("/teams/:id/players", async(err, res)=>{
   }
 })
 
-
-
 /**
  * deleteTeamById
  * @openapi
- * /api/teams/{id}
-  Delete:
-    Description: API to delete a team by ID
-    Summary: Remove a team document from MongoDB
-    parameters:
-       -name: id
-        in: path
-        required: true
-        description: Id of the document to remove
-        schema:
-          type: String
-    responses:
-       '200':
-         description: Team document
-       '401':
-         description: Invalid teamId
-       '500':
-         description: Server Exception 
-       '501':MongoDB Exception
+ * /api/teams/{id}:
+ *   delete:
+ *     tags:
+ *       - Composers
+ *     description: API for deleting an existing team document.
+ *     summary: deletes existing team document from database.
+ *     parameters: 
+ *       - in: path
+ *         name: id
+ *         description: id to delete
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Team Document.
+ *       '401':
+ *         description: Invalid teamId.
+ *       '500':
+ *         description: Server Exception.
+ *       '501':
+ *         description: MongoDB Exception.
  */
 
 router.delete('/teams/:id', async(req, res)=>{

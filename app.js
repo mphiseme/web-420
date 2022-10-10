@@ -9,7 +9,13 @@ const express = require("express");
 const http = require("http");
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
-//const mongoose = require("mongoose");
+const mongoose = require("mongoose");
+//const ComposerApi = require("./routes/phiseme-composer-routes");
+//const PersonApi = require("./routes/phiseme-person-routes");
+//const UserApi = require("./routes/phiseme-session-routes");
+//const CustomerApi = require("./routes/phiseme-node-shopper-routes");
+const TeamApi = require("./capstone/routes/team-routes");
+
 
 //const port = process.env.Port || 3000;
 const app = express();
@@ -28,12 +34,18 @@ const options = {
     },
 
     },
-    apis: ['./routes/*.js'],
+   // apis: ['./routes/*.js'],
+    apis: ['./capstone/routes/team-routes'],
 };
 
 const openapiSpecification = swaggerJsdoc(options);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+//app.use("/api", ComposerApi);
+//app.use("/api",PersonApi);
+//app.use("/api",UserApi);
+//app.use("/api",CustomerApi);
+app.use("/api", TeamApi)
 
 
  http.createServer(app).listen(app.get("port"), function (){
