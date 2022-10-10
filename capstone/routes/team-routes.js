@@ -33,13 +33,13 @@ router.get('/teams', async(req, res)=>{
         res.status(501).send("MongoDB Exception")
       }else {
         res.json(teams)
-      }
-    })
+      };
+    });
 
   } catch(error){
     res.status(500).send("Server Exception")
-  }
-})
+  };
+});
 
 /**
  * assignPlayerToTeam
@@ -85,7 +85,7 @@ router.get('/teams', async(req, res)=>{
 router.post('/teams/:id/players', async(req, res) =>{
   try{
     let teamId = req.params.id;
-    Team.findOne({teamId:teamId}, function(err, team){
+    Team.findOne({_id:teamId}, function(err, team){
       if(err){
         res.status(501).send("MongoDB Exception")
       }else if(!team){
@@ -106,9 +106,9 @@ router.post('/teams/:id/players', async(req, res) =>{
         }else {
           res.json(result);
         }
-      })
+      });
 
-    })
+    });
   } catch(error){
     res.status(501).send("MongoDB Exception")
   }

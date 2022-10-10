@@ -49,7 +49,7 @@ const options = {
     apis: ['./capstone/routes/team-routes.js'],
 };
 
-const openapiSpecification = swaggerJsdoc(options);
+let openapiSpecification = swaggerJsdoc(options);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 //app.use("/api", ComposerApi);
