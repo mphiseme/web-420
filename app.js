@@ -35,7 +35,7 @@ const options = {
 
     },
    // apis: ['./routes/*.js'],
-    apis: ['./capstone/routes/team-routes'],
+    apis: ['./capstone/routes/team-routes.js'],
 };
 
 const openapiSpecification = swaggerJsdoc(options);

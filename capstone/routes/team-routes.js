@@ -6,7 +6,7 @@
 */
 const Express = require("express");
 const router = Express.Router();
-const Team = require("../models/phiseme-team");
+const Team = require("../models/phiseme-team.js");
 
 /**
  * findAllTeams
@@ -26,7 +26,7 @@ const Team = require("../models/phiseme-team");
  *         description: MongoDB Exception.
  */
 
-router.get("/teams", async(req, res)=>{
+router.get('/teams', async(req, res)=>{
   try{
     Team.find({}, function(err, teams){
       if(err){
