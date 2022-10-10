@@ -48,8 +48,6 @@ router.get("/teams", async(req, res)=>{
   }
 })
 
-
-
 /**
  * assignPlayerToTeam
  * @openapi
