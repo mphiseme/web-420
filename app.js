@@ -25,6 +25,17 @@ app.set("port", process.env.PORT || 3000);
 app.use(express.json());
 app.use(express.urlencoded({"extended":true}))
 
+const conn = 'mongodb+srv://web420_user:s3cret@buwebdev-cluster-1.96qtg.mongodb.net/web420DB?retryWrites=true&w=majority';
+mongoose.connect(conn, {
+    promiseLibrary: require('bluebird'),
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+}).then(()=>{
+    console.log(`Connection is made to web420DB on MongoDB Atlas Successfully`);
+}).catch(err =>{
+    console.log(`MongoDB Error: ${err.message}`)
+})
+
 const options = {
     definition: { 
         openapi:'3.0.0',
