@@ -14,7 +14,7 @@ const mongoose = require("mongoose");
 //const PersonApi = require("./routes/phiseme-person-routes");
 //const UserApi = require("./routes/phiseme-session-routes");
 //const CustomerApi = require("./routes/phiseme-node-shopper-routes");
-const TeamApi = require("./capstone/routes/team-routes");
+const TeamApi = require("./capstone/routes/team-routes.js");
 
 
 //const port = process.env.Port || 3000;
