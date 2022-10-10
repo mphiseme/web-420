@@ -33,7 +33,7 @@ const Team = require("../models/phiseme-team");
           description: Unexpected error
  */
 
-router.get("/api/teams", async(req, res)=>{
+router.get("/teams", async(req, res)=>{
   try{
     Team.find({}, function(err, teams){
       if(err){
@@ -85,7 +85,7 @@ router.get("/api/teams", async(req, res)=>{
        description: MongoDB Exception
  */
 
-router.post('/api/teams/:id/players', async(req, res) =>{
+router.post('/teams/:id/players', async(req, res) =>{
   try{
     let teamId = req.params.id;
     Team.findOne({teamId:teamId}, function(err, team){
@@ -144,7 +144,7 @@ router.post('/api/teams/:id/players', async(req, res) =>{
        description: MongoDB Exception
  */
 
-router.get("/api/teams/:id/players", async(err, res)=>{
+router.get("/teams/:id/players", async(err, res)=>{
   try{
     let teamId = req.params.id;
     Team.findOne({teamId:teamId}, function(err, team){
@@ -188,7 +188,7 @@ router.get("/api/teams/:id/players", async(err, res)=>{
        '501':MongoDB Exception
  */
 
-router.delete('/api/teams/:id', async(req, res)=>{
+router.delete('/teams/:id', async(req, res)=>{
   try{
     Team.findByIdAndDelete({'_id':req.params.id}, function(err, team){
       if(err){

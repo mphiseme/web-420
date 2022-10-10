@@ -13,11 +13,11 @@ const players = new Schema({
     lastName: {String},
     salary: {Number}
 })
-const team = new Schema({
+const teamSchema = new Schema({
     name:{String},
     mascot:{String},
     players:[players]
 })
 
-module.exports = mongoose.model("Team",team)
+module.exports = mongoose.model("Team",teamSchema)
 
